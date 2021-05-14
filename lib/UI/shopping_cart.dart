@@ -43,12 +43,12 @@ class _ShoppingCartState extends State<ShoppingCart> {
           calculateTotalAmount(cartItems);
         }
         return Scaffold(
-          backgroundColor: Colors.yellow,
+          backgroundColor: Color(0xFFEEEEEE),
           appBar: AppBar(
-            backgroundColor: Color(0XFFF8F5F0),
+            backgroundColor: Colors.cyan,
             title: Text(
               'Shopping Cart',
-              style: TextStyle(color: Colors.purple),
+              style: TextStyle(color: Colors.black),
             ),
             elevation: 0,
             leading: IconButton(
@@ -62,7 +62,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
             ),
           ),
           bottomNavigationBar: Container(
-            height: 68,
+            height: 88,
             decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
@@ -90,8 +90,16 @@ class _ShoppingCartState extends State<ShoppingCart> {
               padding: const EdgeInsets.all(15.0),
               child: Column(
                 children: [
-                  Text('Total Amount'),
-                  Text('\₹${totalAmount.toStringAsFixed(2)}'),
+                  Text(
+                    'Total Amount',
+                    style:
+                        TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    '\₹${totalAmount.toStringAsFixed(2)}',
+                    style:
+                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.w400),
+                  ),
                 ],
               ),
             ),

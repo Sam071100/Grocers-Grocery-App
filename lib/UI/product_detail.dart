@@ -166,12 +166,38 @@ class _ProductDetailState extends State<ProductDetail> {
                             ),
                             SizedBox(height: 20),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Quantity',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(fontSize: 18.0),
+                                  "Hello",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                Spacer(),
+                                Spacer(),
+                                Spacer(),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 60),
+                                  child: Text(
+                                    'Quantity',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontSize: 19.0),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                  width: 80,
+                                  child: Container(
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: Colors.black, width: 0.5)),
+                                      child: Text(
+                                        widget.shopItem.category,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      )),
                                 ),
                               ],
                             ),

@@ -135,23 +135,20 @@ class _ProductPageState extends State<ProductPage> {
 
             // ),
             backgroundColor: Color(0xFFEEEEEE),
-            // floatingActionButton: FloatingActionButton(
-            //   backgroundColor: Colors.cyan,
-            //   onPressed: () {
-            //     Navigator.push(
-            //         context,
-            //         MaterialPageRoute(
-            //             builder: (_) => BlocProvider.value(
-            //                 value: BlocProvider.of<ShopBloc>(context),
-            //                 child: ShoppingCart())));
-            //   },
-            //   child: Text(
-            //     _cartItems.length.toString(),
-            //     style: TextStyle(
-            //       color: Colors.black,
-            //     ),
-            //   ),
-            // ),
+            floatingActionButton: FloatingActionButton(
+                backgroundColor: Colors.cyan,
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => BlocProvider.value(
+                              value: BlocProvider.of<ShopBloc>(context),
+                              child: ShoppingCart())));
+                },
+                child: Icon(
+                  Icons.tune_rounded,
+                  color: Colors.black,
+                )),
             body: loadingData
                 ? Center(
                     child: Center(

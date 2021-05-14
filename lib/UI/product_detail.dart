@@ -245,6 +245,7 @@ class _ProductDetailState extends State<ProductDetail> {
                       padding: const EdgeInsets.symmetric(horizontal: 40),
                       child: SizedBox(
                         width: double.infinity,
+                        // ignore: deprecated_member_use
                         child: FlatButton(
                             color: Colors.pink,
                             onPressed: () {

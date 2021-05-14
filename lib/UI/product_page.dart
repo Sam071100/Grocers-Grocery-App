@@ -46,17 +46,17 @@ class _ProductPageState extends State<ProductPage> {
 
           return Scaffold(
             appBar: AppBar(
-              leading: IconButton(
-                icon: Icon(
-                  Icons.arrow_back_rounded,
-                  color: Colors.black,
-                ),
-                alignment: Alignment.centerLeft,
-                tooltip: 'Back',
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
+              // leading: IconButton(
+              //   icon: Icon(
+              //     Icons.arrow_back_rounded,
+              //     color: Colors.black,
+              //   ),
+              //   alignment: Alignment.centerLeft,
+              //   tooltip: 'Back',
+              //   onPressed: () {
+              //     Navigator.pop(context);
+              //   },
+              // ),
               title: Text(
                 "Grocery App",
                 style: TextStyle(
@@ -123,6 +123,117 @@ class _ProductPageState extends State<ProductPage> {
                   ),
                 )
               ],
+            ),
+            drawer: Drawer(
+              child: ListView(
+                children: <Widget>[
+                  Card(
+                    child: UserAccountsDrawerHeader(
+                      accountName: Text(
+                        'Shubham Samrat',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      accountEmail: Text(
+                        'shubham.samrat@iitbhu.ac.in',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      onDetailsPressed: () {},
+                      decoration: BoxDecoration(
+                        backgroundBlendMode: BlendMode.difference,
+                        color: Colors.white30,
+                        image: DecorationImage(
+                          image: ExactAssetImage('images/gro.jpg'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      currentAccountPicture: CircleAvatar(
+                        backgroundImage: ExactAssetImage('images/sam.jpg'),
+                      ),
+                    ),
+                  ),
+                  Card(
+                    elevation: 4.0,
+                    child: Column(
+                      children: <Widget>[
+                        ListTile(
+                          leading: Icon(
+                            Icons.favorite_outlined,
+                            color: Colors.red,
+                          ),
+                          title: Text("Favourites"),
+                          onTap: () {},
+                        ),
+                        Divider(),
+                        ListTile(
+                          leading: Icon(Icons.history_rounded),
+                          title: Text("Order History"),
+                          onTap: () {},
+                        )
+                      ],
+                    ),
+                  ),
+                  Card(
+                    elevation: 4.0,
+                    child: Column(
+                      children: <Widget>[
+                        ListTile(
+                          leading: Icon(Icons.settings),
+                          title: Text('Settings'),
+                          onTap: () {},
+                        ),
+                        Divider(),
+                        ListTile(
+                          leading: Icon(Icons.help),
+                          title: Text('Help'),
+                          onTap: () {},
+                        )
+                      ],
+                    ),
+                  ),
+                  Card(
+                    elevation: 4.0,
+                    child: ListTile(
+                      leading: Icon(Icons.power_settings_new),
+                      title: Text(
+                        'Logout',
+                        style:
+                            TextStyle(color: Colors.redAccent, fontSize: 17.0),
+                      ),
+                      onTap: () {},
+                    ),
+                  ),
+                  Card(
+                    elevation: 4.0,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          'About',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        Text(
+                          'Should you encounter any bugs, glitches, lack of functionality, delayed deliveries, billing errors or other problems on the beta website, please email us on sam@iitbhu.ac.in\n',
+                          style: TextStyle(fontSize: 13.0),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Image.asset('images/ios.jpg'),
+                            Image.asset('images/play.jpg'),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
             // appBar: AppBar(
             //   title: Text(

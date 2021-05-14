@@ -127,6 +127,7 @@ class _FilterPageState extends State<FilterPage> {
                                   fontSize: 12.0, color: Colors.black26),
                             ),
                             _verticalD(),
+                            // ignore: deprecated_member_use
                             OutlineButton(
                                 borderSide:
                                     BorderSide(color: Colors.amber.shade500),
@@ -139,6 +140,7 @@ class _FilterPageState extends State<FilterPage> {
                                   borderRadius: BorderRadius.circular(30.0),
                                 )),
                             _verticalD(),
+                            // ignore: deprecated_member_use
                             OutlineButton(
                                 borderSide:
                                     BorderSide(color: Colors.amber.shade500),
@@ -301,6 +303,7 @@ class _FilterPageState extends State<FilterPage> {
   }
 }
 
+// ignore: camel_case_types
 class filterChipWidget extends StatefulWidget {
   final String chipName;
 
@@ -310,6 +313,7 @@ class filterChipWidget extends StatefulWidget {
   _filterChipWidgetState createState() => _filterChipWidgetState();
 }
 
+// ignore: camel_case_types
 class _filterChipWidgetState extends State<filterChipWidget> {
   var _isSelected = false;
 

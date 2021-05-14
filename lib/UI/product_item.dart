@@ -64,6 +64,7 @@ class ProductItem extends StatelessWidget {
             Positioned(
               bottom: 30,
               right: 50,
+              // ignore: deprecated_member_use
               child: FlatButton(
                   color: Colors.pink,
                   onPressed: addToCart,

@@ -42,7 +42,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 },
               ),
               title: Text(
-                "Grocery App",
+                "Product Details",
                 style: TextStyle(
                   color: Colors.black,
                 ),

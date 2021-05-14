@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:grocery_app_bloc_architecture/UI/filter_page.dart';
 import 'package:grocery_app_bloc_architecture/model/shop.dart';
 import 'package:grocery_app_bloc_architecture/shop/bloc/shop_bloc.dart';
 
@@ -143,7 +144,7 @@ class _ProductPageState extends State<ProductPage> {
                       MaterialPageRoute(
                           builder: (_) => BlocProvider.value(
                               value: BlocProvider.of<ShopBloc>(context),
-                              child: ShoppingCart())));
+                              child: FilterPage())));
                 },
                 child: Icon(
                   Icons.tune_rounded,

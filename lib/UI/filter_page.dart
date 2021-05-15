@@ -37,7 +37,7 @@ class _FilterPageState extends State<FilterPage> {
                   },
                 ),
                 title: Text(
-                  "List Prefrences",
+                  "List Preferences",
                   style: TextStyle(
                     color: Colors.black,
                   ),
@@ -159,10 +159,10 @@ class _FilterPageState extends State<FilterPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                         )),
                         Container(
-                            height: 400.0,
+                            height: 500.0,
                             margin: EdgeInsets.only(left: 7.0, top: 5.0),
                             child: ListView(
-                              scrollDirection: Axis.horizontal,
+                              scrollDirection: Axis.vertical,
                               children: <Widget>[
                                 Column(
                                   children: <Widget>[
@@ -227,10 +227,9 @@ class _FilterPageState extends State<FilterPage> {
                                               filterChipWidget(
                                                   chipName: 'Special Price'),
                                               filterChipWidget(
-                                                  chipName: 'Item of the day'),
+                                                  chipName: 'Dairy Products'),
                                               filterChipWidget(
-                                                  chipName:
-                                                      'Buy 1, GET 1 Free'),
+                                                  chipName: 'Buy 1 GET 1 Free'),
                                               filterChipWidget(
                                                   chipName: 'Fresh'),
                                             ],
@@ -306,6 +305,7 @@ class _FilterPageState extends State<FilterPage> {
 // ignore: camel_case_types
 class filterChipWidget extends StatefulWidget {
   final String chipName;
+  // Function filter() {}
 
   filterChipWidget({Key key, this.chipName}) : super(key: key);
 
@@ -335,7 +335,7 @@ class _filterChipWidgetState extends State<filterChipWidget> {
           _isSelected = isSelected;
         });
       },
-      selectedColor: Color(0xffeadffd),
+      selectedColor: Colors.cyan,
     );
   }
 }

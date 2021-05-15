@@ -12,6 +12,7 @@ class ShoppingCart extends StatefulWidget {
 class _ShoppingCartState extends State<ShoppingCart> {
   List<ShopItem> cartItems;
   double totalAmount = 0;
+  double delievery = 50.0;
   void calculateTotalAmount(List<ShopItem> list) {
     double res = 0;
 
@@ -19,6 +20,13 @@ class _ShoppingCartState extends State<ShoppingCart> {
       res = res + element.price * element.quantity;
     });
     totalAmount = res;
+    // Adding the Delievery charges:: If the total order amount will be less then Rs.50 then Rs.50 will be the delivery charges leived on the total
+    if (totalAmount < 50.0 && totalAmount > 0.0) {
+      delievery = 50.0;
+      totalAmount += delievery;
+    } else {
+      delievery = 0.00;
+    }
   }
 
   @override
@@ -62,7 +70,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
             ),
           ),
           bottomNavigationBar: Container(
-            height: 88,
+            height: 130,
             decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
@@ -90,6 +98,31 @@ class _ShoppingCartState extends State<ShoppingCart> {
               padding: const EdgeInsets.all(15.0),
               child: Column(
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 30.0),
+                        child: Icon(Icons.delivery_dining),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 60.0),
+                        child: Container(
+                          child: Text(
+                            "Delivery Charges:   \₹${delievery.toStringAsFixed(2)}",
+                            style: TextStyle(
+                                fontSize: 20.0, fontWeight: FontWeight.w400),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Spacer(),
+                  Divider(
+                    color: Colors.black,
+                    height: 20.0,
+                  ),
                   Text(
                     'Total Amount',
                     style:

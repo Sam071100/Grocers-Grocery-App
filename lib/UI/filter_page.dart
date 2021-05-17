@@ -147,7 +147,7 @@ class _FilterPageState extends State<FilterPage> {
                                 child: const Text('APPLY'),
                                 textColor: Colors.amber.shade500,
                                 onPressed: () {
-                                  // Apply the following Filters
+                                  // On the press of this button the selected filters should be applied and should go to the previous screen to see the applied changes
                                   Navigator.pop(context);
                                 },
                                 shape: OutlineInputBorder(

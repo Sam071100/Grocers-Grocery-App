@@ -211,7 +211,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   IconButton(
-                                    icon: Icon(Icons.remove),
+                                    icon: Icon(Icons.remove_circle_rounded),
                                     onPressed: () {
                                       if (cartItems[index].quantity > 1)
                                         setState(() {
@@ -235,7 +235,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                                     ),
                                   ),
                                   IconButton(
-                                    icon: Icon(Icons.add),
+                                    icon: Icon(Icons.add_circle_rounded),
                                     onPressed: () {
                                       setState(() {
                                         calculateTotalAmount(cartItems);

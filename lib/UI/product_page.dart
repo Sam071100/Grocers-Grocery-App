@@ -11,10 +11,10 @@ import 'shopping_cart.dart';
 class ProductPage extends StatefulWidget {
   const ProductPage({Key key}) : super(key: key);
   @override
-  _ProductPageState createState() => _ProductPageState();
+  ProductPageState createState() => ProductPageState();
 }
 
-class _ProductPageState extends State<ProductPage> {
+class ProductPageState extends State<ProductPage> {
   bool loadingData = true;
   List<ShopItem> _cartItems = [];
   List<ShopItem> shopItems = [];

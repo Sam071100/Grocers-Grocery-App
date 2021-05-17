@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:grocery_app_bloc_architecture/UI/product_page.dart';
 import 'package:grocery_app_bloc_architecture/UI/shopping_cart.dart';
+import 'package:grocery_app_bloc_architecture/Widget/filterchipWidget.dart';
 import 'package:grocery_app_bloc_architecture/model/shop.dart';
 import 'package:grocery_app_bloc_architecture/shop/bloc/shop_bloc.dart';
 
@@ -12,6 +14,11 @@ class FilterPage extends StatefulWidget {
 
 class _FilterPageState extends State<FilterPage> {
   List<ShopItem> cartItems = [];
+  List<ShopItem> shopItems = [];
+  // To access the State of Filterchip widget
+  final key = new GlobalKey<filterChipWidgetState>();
+  ProductPageState productPageState = ProductPageState();
+
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
@@ -22,6 +29,7 @@ class _FilterPageState extends State<FilterPage> {
           // Basically the state is ShopPageLoaded state as filter will be applied when the Page is loaded as Users want to see the speciifc product
           if (state is ShopPageLoadedState) {
             cartItems = state.cartData.shopitems;
+            shopItems = state.shopData.shopitems;
           }
           return Scaffold(
               appBar: AppBar(
@@ -134,7 +142,10 @@ class _FilterPageState extends State<FilterPage> {
                                 child: const Text('CLEAR'),
                                 textColor: Colors.amber.shade500,
                                 onPressed: () {
-                                  // Clear the selected Filter chip
+                                  //   setState(() {
+                                  //     key.currentState
+                                  //         .deselect(key.currentState.isSelected);
+                                  //   });
                                 },
                                 shape: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(30.0),
@@ -298,44 +309,6 @@ class _FilterPageState extends State<FilterPage> {
       myTitle,
       style: TextStyle(
           color: Colors.black, fontSize: 24.0, fontWeight: FontWeight.bold),
-    );
-  }
-}
-
-// ignore: camel_case_types
-class filterChipWidget extends StatefulWidget {
-  final String chipName;
-  // Function filter() {}
-
-  filterChipWidget({Key key, this.chipName}) : super(key: key);
-
-  @override
-  _filterChipWidgetState createState() => _filterChipWidgetState();
-}
-
-// ignore: camel_case_types
-class _filterChipWidgetState extends State<filterChipWidget> {
-  var _isSelected = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return FilterChip(
-      label: Text(widget.chipName),
-      labelStyle: TextStyle(
-          color: Color(0xff6200ee),
-          fontSize: 16.0,
-          fontWeight: FontWeight.bold),
-      selected: _isSelected,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30.0),
-      ),
-      backgroundColor: Color(0xffededed),
-      onSelected: (isSelected) {
-        setState(() {
-          _isSelected = isSelected;
-        });
-      },
-      selectedColor: Colors.cyan,
     );
   }
 }

@@ -15,6 +15,7 @@ class FilterPage extends StatefulWidget {
 class _FilterPageState extends State<FilterPage> {
   List<ShopItem> cartItems = [];
   List<ShopItem> shopItems = [];
+  List<ShopItem> filteredshopItems = [];
   // To access the State of Filterchip widget
   final key = new GlobalKey<filterChipWidgetState>();
   ProductPageState productPageState = ProductPageState();
@@ -30,6 +31,7 @@ class _FilterPageState extends State<FilterPage> {
           if (state is ShopPageLoadedState) {
             cartItems = state.cartData.shopitems;
             shopItems = state.shopData.shopitems;
+            filteredshopItems = shopItems;
           }
           return Scaffold(
               appBar: AppBar(
@@ -159,6 +161,7 @@ class _FilterPageState extends State<FilterPage> {
                                 textColor: Colors.amber.shade500,
                                 onPressed: () {
                                   // Apply the following Filters
+                                  Navigator.pop(context);
                                 },
                                 shape: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(30.0),
@@ -194,19 +197,20 @@ class _FilterPageState extends State<FilterPage> {
                                           runSpacing: 3.0,
                                           children: <Widget>[
                                             filterChipWidget(
-                                                chipName: 'Lowest Price First'),
+                                              chipName: 'Lowest Price First',
+                                            ),
                                             filterChipWidget(
                                                 chipName:
                                                     'Highest Price First'),
                                             filterChipWidget(
                                                 chipName: 'Alphabetical Order'),
                                             filterChipWidget(
+                                                chipName: 'Less than \₹90'),
+                                            filterChipWidget(
                                                 chipName:
-                                                    'Popular Price First'),
+                                                    'Greater than and equal to \₹90'),
                                             filterChipWidget(
-                                                chipName: 'Best Price First'),
-                                            filterChipWidget(
-                                                chipName: 'Most Rated First'),
+                                                chipName: 'Less than \₹50'),
                                           ],
                                         )),
                                       ),

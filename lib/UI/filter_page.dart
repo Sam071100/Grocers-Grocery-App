@@ -123,51 +123,6 @@ class _FilterPageState extends State<FilterPage> {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            IconButton(
-                                icon: const Icon(Icons.close),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                }),
-                            Text(
-                              'FILTER/SORTING',
-                              style: TextStyle(
-                                  fontSize: 12.0, color: Colors.black26),
-                            ),
-                            _verticalD(),
-                            // ignore: deprecated_member_use
-                            OutlineButton(
-                                borderSide:
-                                    BorderSide(color: Colors.amber.shade500),
-                                child: const Text('CLEAR'),
-                                textColor: Colors.amber.shade500,
-                                onPressed: () {
-                                  //   setState(() {
-                                  //     key.currentState
-                                  //         .deselect(key.currentState.isSelected);
-                                  //   });
-                                },
-                                shape: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                )),
-                            _verticalD(),
-                            // ignore: deprecated_member_use
-                            OutlineButton(
-                                borderSide:
-                                    BorderSide(color: Colors.amber.shade500),
-                                child: const Text('APPLY'),
-                                textColor: Colors.amber.shade500,
-                                onPressed: () {
-                                  // Apply the following Filters
-                                  Navigator.pop(context);
-                                },
-                                shape: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                )),
-                          ],
-                        ),
                         Container(
                             child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -196,21 +151,100 @@ class _FilterPageState extends State<FilterPage> {
                                           spacing: 5.0,
                                           runSpacing: 3.0,
                                           children: <Widget>[
-                                            filterChipWidget(
-                                              chipName: 'Lowest Price First',
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  shopItems.sort((a, b) => a
+                                                      .price
+                                                      .compareTo(b.price));
+                                                  filteredshopItems = shopItems;
+                                                });
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                'Lowest Price First',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
                                             ),
-                                            filterChipWidget(
-                                                chipName:
-                                                    'Highest Price First'),
-                                            filterChipWidget(
-                                                chipName: 'Alphabetical Order'),
-                                            filterChipWidget(
-                                                chipName: 'Less than \₹90'),
-                                            filterChipWidget(
-                                                chipName:
-                                                    'Greater than and equal to \₹90'),
-                                            filterChipWidget(
-                                                chipName: 'Less than \₹50'),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  shopItems.sort((b, a) => a
+                                                      .price
+                                                      .compareTo(b.price));
+                                                  filteredshopItems = shopItems;
+                                                });
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                'Highest Price First',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
+                                            ),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  shopItems.sort();
+                                                  filteredshopItems = shopItems;
+                                                });
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                'Alphabetical Order',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
+                                            ),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  filteredshopItems = shopItems
+                                                      .where((u) =>
+                                                          (u.price) < 90.0)
+                                                      .toList();
+                                                });
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                'Less than \₹90',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
+                                            ),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  filteredshopItems = shopItems
+                                                      .where((u) =>
+                                                          (u.price) >= 90.0)
+                                                      .toList();
+                                                });
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                'Greater than and equal to \₹90',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
+                                            ),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  filteredshopItems = shopItems
+                                                      .where((u) =>
+                                                          (u.price) < 50.0)
+                                                      .toList();
+                                                });
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                'Less than \₹50',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
+                                            ),
                                           ],
                                         )),
                                       ),

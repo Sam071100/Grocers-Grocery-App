@@ -148,6 +148,7 @@ class _FilterPageState extends State<FilterPage> {
                                 textColor: Colors.amber.shade500,
                                 onPressed: () {
                                   // Apply the following Filters
+                                  Navigator.pop(context);
                                 },
                                 shape: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(30.0),

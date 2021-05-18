@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grocery_app_bloc_architecture/UI/product_page.dart';
 import 'package:grocery_app_bloc_architecture/UI/shopping_cart.dart';
-import 'package:grocery_app_bloc_architecture/Widget/filterchipWidget.dart';
 import 'package:grocery_app_bloc_architecture/model/shop.dart';
 import 'package:grocery_app_bloc_architecture/shop/bloc/shop_bloc.dart';
 
@@ -17,7 +16,6 @@ class _FilterPageState extends State<FilterPage> {
   List<ShopItem> shopItems = [];
   List<ShopItem> filteredshopItems = [];
   // To access the State of Filterchip widget
-  final key = new GlobalKey<filterChipWidgetState>();
   ProductPageState productPageState = ProductPageState();
 
   @override
@@ -123,51 +121,51 @@ class _FilterPageState extends State<FilterPage> {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            IconButton(
-                                icon: const Icon(Icons.close),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                }),
-                            Text(
-                              'FILTER/SORTING',
-                              style: TextStyle(
-                                  fontSize: 12.0, color: Colors.black26),
-                            ),
-                            _verticalD(),
-                            // ignore: deprecated_member_use
-                            OutlineButton(
-                                borderSide:
-                                    BorderSide(color: Colors.amber.shade500),
-                                child: const Text('CLEAR'),
-                                textColor: Colors.amber.shade500,
-                                onPressed: () {
-                                  //   setState(() {
-                                  //     key.currentState
-                                  //         .deselect(key.currentState.isSelected);
-                                  //   });
-                                },
-                                shape: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                )),
-                            _verticalD(),
-                            // ignore: deprecated_member_use
-                            OutlineButton(
-                                borderSide:
-                                    BorderSide(color: Colors.amber.shade500),
-                                child: const Text('APPLY'),
-                                textColor: Colors.amber.shade500,
-                                onPressed: () {
-                                  // Apply the following Filters
-                                  Navigator.pop(context);
-                                },
-                                shape: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                )),
-                          ],
-                        ),
+                        // Row(
+                        //   crossAxisAlignment: CrossAxisAlignment.center,
+                        //   children: <Widget>[
+                        //     IconButton(
+                        //         icon: const Icon(Icons.close),
+                        //         onPressed: () {
+                        //           Navigator.pop(context);
+                        //         }),
+                        //     Text(
+                        //       'FILTER/SORTING',
+                        //       style: TextStyle(
+                        //           fontSize: 12.0, color: Colors.black26),
+                        //     ),
+                        //     _verticalD(),
+                        //     // ignore: deprecated_member_use
+                        //     OutlineButton(
+                        //         borderSide:
+                        //             BorderSide(color: Colors.amber.shade500),
+                        //         child: const Text('CLEAR'),
+                        //         textColor: Colors.amber.shade500,
+                        //         onPressed: () {
+                        //           //   setState(() {
+                        //           //     key.currentState
+                        //           //         .deselect(key.currentState.isSelected);
+                        //           //   });
+                        //         },
+                        //         shape: OutlineInputBorder(
+                        //           borderRadius: BorderRadius.circular(30.0),
+                        //         )),
+                        //     _verticalD(),
+                        //     // ignore: deprecated_member_use
+                        //     OutlineButton(
+                        //         borderSide:
+                        //             BorderSide(color: Colors.amber.shade500),
+                        //         child: const Text('APPLY'),
+                        //         textColor: Colors.amber.shade500,
+                        //         onPressed: () {
+                        //           // Apply the following Filters
+                        //           Navigator.pop(context);
+                        //         },
+                        //         shape: OutlineInputBorder(
+                        //           borderRadius: BorderRadius.circular(30.0),
+                        //         )),
+                        //   ],
+                        // ),
                         Container(
                             child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -221,15 +219,53 @@ class _FilterPageState extends State<FilterPage> {
                                               child:
                                                   Text('Highest Price First'),
                                             ),
-                                            filterChipWidget(
-                                                chipName: 'Alphabetical Order'),
-                                            filterChipWidget(
-                                                chipName: 'Less than \₹90'),
-                                            filterChipWidget(
-                                                chipName:
-                                                    'Greater than and equal to \₹90'),
-                                            filterChipWidget(
-                                                chipName: 'Less than \₹50'),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  shopItems.sort();
+                                                  filteredshopItems = shopItems;
+                                                });
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text('Alphabetical Order'),
+                                            ),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  filteredshopItems = shopItems
+                                                      .where((u) =>
+                                                          (u.price) < 90.0)
+                                                      .toList();
+                                                });
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text('Less than \₹90'),
+                                            ),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  filteredshopItems = shopItems
+                                                      .where((u) =>
+                                                          (u.price) >= 90.0)
+                                                      .toList();
+                                                });
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  'Greater than and equal to \₹90'),
+                                            ),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  filteredshopItems = shopItems
+                                                      .where((u) =>
+                                                          (u.price) < 50.0)
+                                                      .toList();
+                                                });
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text('Less than \₹50'),
+                                            ),
                                           ],
                                         )),
                                       ),
@@ -254,18 +290,63 @@ class _FilterPageState extends State<FilterPage> {
                                             spacing: 5.0,
                                             runSpacing: 5.0,
                                             children: <Widget>[
-                                              filterChipWidget(
-                                                  chipName: 'Fruits'),
-                                              filterChipWidget(
-                                                  chipName: 'Vegetables'),
-                                              filterChipWidget(
-                                                  chipName: 'Special Price'),
-                                              filterChipWidget(
-                                                  chipName: 'Dairy Products'),
-                                              filterChipWidget(
-                                                  chipName: 'Buy 1 GET 1 Free'),
-                                              filterChipWidget(
-                                                  chipName: 'Fresh'),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    filteredshopItems =
+                                                        shopItems
+                                                            .where((u) => (u
+                                                                .category
+                                                                .contains(
+                                                                    "fruits")))
+                                                            .toList();
+                                                  });
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text('Fruits'),
+                                              ),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    filteredshopItems = shopItems
+                                                        .where((u) => (u
+                                                            .category
+                                                            .contains(
+                                                                "vegetables")))
+                                                        .toList();
+                                                  });
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text('Vegetables'),
+                                              ),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  // May be in future
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text('Dairy Products'),
+                                              ),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  // May be in future
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text('Special Price'),
+                                              ),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  // May be in future
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text('Buy 1 GET 1 Free'),
+                                              ),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  // May be in future
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text('Fresh'),
+                                              ),
                                             ],
                                           ),
                                         ),
@@ -291,18 +372,48 @@ class _FilterPageState extends State<FilterPage> {
                                             spacing: 5.0,
                                             runSpacing: 5.0,
                                             children: <Widget>[
-                                              filterChipWidget(
-                                                  chipName: '10% OR LESS'),
-                                              filterChipWidget(
-                                                  chipName: '20% OR LESS'),
-                                              filterChipWidget(
-                                                  chipName: '30% OR LESS'),
-                                              filterChipWidget(
-                                                  chipName: '40% OR LESS'),
-                                              filterChipWidget(
-                                                  chipName: '50% OR LESS'),
-                                              filterChipWidget(
-                                                  chipName: '70% OR LESS'),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  // May be in future
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text('10% OR LESS'),
+                                              ),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  // May be in future
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text('20% OR LESS'),
+                                              ),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  // May be in future
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text('30% OR LESS'),
+                                              ),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  // May be in future
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text('40% OR LESS'),
+                                              ),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  // May be in future
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text('50% OR LESS'),
+                                              ),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  // May be in future
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text('70% OR LESS'),
+                                              ),
                                             ],
                                           ),
                                         ),
@@ -324,9 +435,6 @@ class _FilterPageState extends State<FilterPage> {
     );
   }
 
-  _verticalD() => Container(
-        margin: EdgeInsets.only(left: 5.0, right: 0.0, top: 5.0, bottom: 0.0),
-      );
   Widget _titleContainer(String myTitle) {
     return Text(
       myTitle,

@@ -121,6 +121,7 @@ class _FilterPageState extends State<FilterPage> {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
+<<<<<<< HEAD
                         // Row(
                         //   crossAxisAlignment: CrossAxisAlignment.center,
                         //   children: <Widget>[
@@ -166,6 +167,50 @@ class _FilterPageState extends State<FilterPage> {
                         //         )),
                         //   ],
                         // ),
+=======
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            IconButton(
+                                icon: const Icon(Icons.close),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                }),
+                            Text(
+                              'FILTER/SORTING',
+                              style: TextStyle(
+                                  fontSize: 12.0, color: Colors.black26),
+                            ),
+                            _verticalD(),
+                            // ignore: deprecated_member_use
+                            OutlineButton(
+                                borderSide:
+                                    BorderSide(color: Colors.amber.shade500),
+                                child: const Text('CLEAR'),
+                                textColor: Colors.amber.shade500,
+                                onPressed: () {
+                                  // Clear the selected Filter chip
+                                },
+                                shape: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                )),
+                            _verticalD(),
+                            // ignore: deprecated_member_use
+                            OutlineButton(
+                                borderSide:
+                                    BorderSide(color: Colors.amber.shade500),
+                                child: const Text('APPLY'),
+                                textColor: Colors.amber.shade500,
+                                onPressed: () {
+                                  // On the press of this button the selected filters should be applied and should go to the previous screen to see the applied changes
+                                  Navigator.pop(context);
+                                },
+                                shape: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                )),
+                          ],
+                        ),
+>>>>>>> main
                         Container(
                             child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

@@ -171,7 +171,12 @@ class _ShoppingCartState extends State<ShoppingCart> {
                                     width: 64,
                                   ),
                                   SizedBox(width: 20),
-                                  Text(cartItems[index].title),
+                                  Text(
+                                    cartItems[index].title,
+                                    style: TextStyle(
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.w600),
+                                  ),
                                   Spacer(),
                                   IconButton(
                                     icon: Icon(Icons.cancel),
@@ -245,7 +250,11 @@ class _ShoppingCartState extends State<ShoppingCart> {
                                   ),
                                   Spacer(),
                                   Text(
-                                      '\₹${cartItems[index].price * cartItems[index].quantity} ')
+                                    '\₹${cartItems[index].price * cartItems[index].quantity} ',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18.0),
+                                  )
                                 ],
                               ),
                             ],

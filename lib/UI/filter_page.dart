@@ -1,22 +1,27 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:grocery_app_bloc_architecture/UI/product_page.dart';
 // import 'package:grocery_app_bloc_architecture/UI/shopping_cart.dart';
 // import 'package:grocery_app_bloc_architecture/model/shop.dart';
 // import 'package:grocery_app_bloc_architecture/shop/bloc/shop_bloc.dart';
 
+// // ignore: must_be_immutable
 // class FilterPage extends StatefulWidget {
-//   const FilterPage({Key key}) : super(key: key);
+//   List<ShopItem> cartItems = [];
+//   List<ShopItem> shopItems = [];
+//   List<ShopItem> filteredshopItems = [];
+
+//   FilterPage({Key key, this.cartItems, this.filteredshopItems, this.shopItems})
+//       : super(key: key);
 //   @override
 //   _FilterPageState createState() => _FilterPageState();
 // }
 
 // class _FilterPageState extends State<FilterPage> {
-//   List<ShopItem> cartItems = [];
-//   List<ShopItem> shopItems = [];
-//   List<ShopItem> filteredshopItems = [];
+//   // List<ShopItem> cartItems = [];
+//   // List<ShopItem> shopItems = [];
+//   // List<ShopItem> filteredshopItems = [];
+
 //   // To access the State of Filterchip widget
-//   ProductPageState productPageState = ProductPageState();
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -26,11 +31,6 @@
 //       child: BlocBuilder<ShopBloc, ShopState>(
 //         builder: (context, state) {
 //           // Basically the state is ShopPageLoaded state as filter will be applied when the Page is loaded as Users want to see the speciifc product
-//           if (state is ShopPageLoadedState) {
-//             cartItems = state.cartData.shopitems;
-//             shopItems = state.shopData.shopitems;
-//             filteredshopItems = shopItems;
-//           }
 //           return Scaffold(
 //               appBar: AppBar(
 //                 leading: IconButton(
@@ -82,7 +82,7 @@
 //                                                   context),
 //                                               child: ShoppingCart())));
 //                                 }),
-//                             cartItems.length == 0
+//                             widget.cartItems.length == 0
 //                                 ? Container()
 //                                 : Positioned(
 //                                     child: Stack(
@@ -95,7 +95,8 @@
 //                                           right: 5.5,
 //                                           child: Center(
 //                                             child: Text(
-//                                               cartItems.length.toString(),
+//                                               widget.cartItems.length
+//                                                   .toString(),
 //                                               style: TextStyle(
 //                                                   color: Colors.white,
 //                                                   fontSize: 11.0,
@@ -197,10 +198,11 @@
 //                                             ElevatedButton(
 //                                               onPressed: () {
 //                                                 setState(() {
-//                                                   shopItems.sort((a, b) => a
-//                                                       .price
-//                                                       .compareTo(b.price));
-//                                                   filteredshopItems = shopItems;
+//                                                   widget.shopItems.sort(
+//                                                       (a, b) => a.price
+//                                                           .compareTo(b.price));
+//                                                   widget.filteredshopItems =
+//                                                       widget.shopItems;
 //                                                 });
 //                                                 Navigator.pop(context);
 //                                               },
@@ -209,10 +211,11 @@
 //                                             ElevatedButton(
 //                                               onPressed: () {
 //                                                 setState(() {
-//                                                   shopItems.sort((b, a) => a
-//                                                       .price
-//                                                       .compareTo(b.price));
-//                                                   filteredshopItems = shopItems;
+//                                                   widget.shopItems.sort(
+//                                                       (b, a) => a.price
+//                                                           .compareTo(b.price));
+//                                                   widget.filteredshopItems =
+//                                                       widget.shopItems;
 //                                                 });
 //                                                 Navigator.pop(context);
 //                                               },
@@ -222,8 +225,9 @@
 //                                             ElevatedButton(
 //                                               onPressed: () {
 //                                                 setState(() {
-//                                                   shopItems.sort();
-//                                                   filteredshopItems = shopItems;
+//                                                   widget.shopItems.sort();
+//                                                   widget.filteredshopItems =
+//                                                       widget.shopItems;
 //                                                 });
 //                                                 Navigator.pop(context);
 //                                               },
@@ -232,10 +236,11 @@
 //                                             ElevatedButton(
 //                                               onPressed: () {
 //                                                 setState(() {
-//                                                   filteredshopItems = shopItems
-//                                                       .where((u) =>
-//                                                           (u.price) < 90.0)
-//                                                       .toList();
+//                                                   widget.filteredshopItems =
+//                                                       widget.shopItems
+//                                                           .where((u) =>
+//                                                               (u.price) < 90.0)
+//                                                           .toList();
 //                                                 });
 //                                                 Navigator.pop(context);
 //                                               },
@@ -244,10 +249,11 @@
 //                                             ElevatedButton(
 //                                               onPressed: () {
 //                                                 setState(() {
-//                                                   filteredshopItems = shopItems
-//                                                       .where((u) =>
-//                                                           (u.price) >= 90.0)
-//                                                       .toList();
+//                                                   widget.filteredshopItems =
+//                                                       widget.shopItems
+//                                                           .where((u) =>
+//                                                               (u.price) >= 90.0)
+//                                                           .toList();
 //                                                 });
 //                                                 Navigator.pop(context);
 //                                               },
@@ -257,10 +263,11 @@
 //                                             ElevatedButton(
 //                                               onPressed: () {
 //                                                 setState(() {
-//                                                   filteredshopItems = shopItems
-//                                                       .where((u) =>
-//                                                           (u.price) < 50.0)
-//                                                       .toList();
+//                                                   widget.filteredshopItems =
+//                                                       widget.shopItems
+//                                                           .where((u) =>
+//                                                               (u.price) < 50.0)
+//                                                           .toList();
 //                                                 });
 //                                                 Navigator.pop(context);
 //                                               },
@@ -293,8 +300,8 @@
 //                                               ElevatedButton(
 //                                                 onPressed: () {
 //                                                   setState(() {
-//                                                     filteredshopItems =
-//                                                         shopItems
+//                                                     widget.filteredshopItems =
+//                                                         widget.shopItems
 //                                                             .where((u) => (u
 //                                                                 .category
 //                                                                 .contains(
@@ -308,12 +315,13 @@
 //                                               ElevatedButton(
 //                                                 onPressed: () {
 //                                                   setState(() {
-//                                                     filteredshopItems = shopItems
-//                                                         .where((u) => (u
-//                                                             .category
-//                                                             .contains(
-//                                                                 "vegetables")))
-//                                                         .toList();
+//                                                     widget.filteredshopItems =
+//                                                         widget.shopItems
+//                                                             .where((u) => (u
+//                                                                 .category
+//                                                                 .contains(
+//                                                                     "vegetables")))
+//                                                             .toList();
 //                                                   });
 //                                                   Navigator.pop(context);
 //                                                 },

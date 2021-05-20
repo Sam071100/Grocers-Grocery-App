@@ -1,5 +1,5 @@
 class ShopData {
-  List<ShopItem> shopitems; // Datatype of product to be shown in the list
+  List<ShopItem> shopitems; // Datatype for defining list of items
 
   ShopData({this.shopitems});
 

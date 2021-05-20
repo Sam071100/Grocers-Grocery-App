@@ -414,7 +414,9 @@ class ProductPageState extends State<ProductPage> {
                                             ElevatedButton(
                                               onPressed: () {
                                                 setState(() {
-                                                  shopItems.sort();
+                                                  shopItems.sort((a, b) => a
+                                                      .title
+                                                      .compareTo(b.title));
                                                   filteredshopItems = shopItems;
                                                 });
                                                 // Navigator.pop(context);
@@ -493,7 +495,7 @@ class ProductPageState extends State<ProductPage> {
                                                                     "fruits")))
                                                             .toList();
                                                   });
-                                                  Navigator.pop(context);
+                                                  // Navigator.pop(context);
                                                 },
                                                 child: Text('Fruits'),
                                               ),
@@ -507,7 +509,7 @@ class ProductPageState extends State<ProductPage> {
                                                                 "vegetables")))
                                                         .toList();
                                                   });
-                                                  Navigator.pop(context);
+                                                  // Navigator.pop(context);
                                                 },
                                                 child: Text('Vegetables'),
                                               ),

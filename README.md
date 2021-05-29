@@ -7,9 +7,9 @@ This App is written in flutter with love and passion in an attempt to learn flut
 
 This project is a starting point for a Flutter application.
 
-Filter is the branch in which the buttons are brought on the product page screen.
-Filterchip is the branch where the filterchip buttons are used and they are on the filterchip page.
-Main is the branch where the function of filters are not written.
+- Filter is the branch in which the buttons are brought on the product page screen.
+- Filterchip is the branch where the filterchip buttons are used and they are on the filterchip page.
+- Main is the branch where the function of filters are not written.
 
 A few resources to get you started if this is your first Flutter project:
 
